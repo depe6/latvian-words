@@ -15,11 +15,11 @@ import { AuthService } from '../services';
                     <form [formGroup]="form">
                         <mat-form-field class="input">
                             <mat-label>Username</mat-label>
-                            <input formControlName="username" matInput />
+                            <input id="username" formControlName="username" matInput />
                         </mat-form-field>
                         <mat-form-field class="input">
                             <mat-label>Password</mat-label>
-                            <input formControlName="password" matInput />
+                            <input id="password" formControlName="password" matInput />
                         </mat-form-field>
                     </form>
                     <div class="button-container">
