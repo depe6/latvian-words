@@ -22,57 +22,59 @@ import { VerbDialogComponent } from './verb-dialog.component';
                     Add New
                 </button>
             </div>
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef>No.</th>
-                    <td mat-cell *matCellDef="let verb">
-                        {{ dataSource.indexOf(verb) + 1 }}
-                    </td>
-                </ng-container>
+            <div class="table-container mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource">
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef>No.</th>
+                        <td mat-cell *matCellDef="let verb">
+                            {{ dataSource.indexOf(verb) + 1 }}
+                        </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="latvianInfinitive">
-                    <th mat-header-cell *matHeaderCellDef>Latvian</th>
-                    <td mat-cell *matCellDef="let verb">
-                        {{ verb.latvianInfinitive }}
-                    </td>
-                </ng-container>
+                    <ng-container matColumnDef="latvianInfinitive">
+                        <th mat-header-cell *matHeaderCellDef>Latvian</th>
+                        <td mat-cell *matCellDef="let verb">
+                            {{ verb.latvianInfinitive }}
+                        </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="russianInfinitive">
-                    <th mat-header-cell *matHeaderCellDef>Russian</th>
-                    <td mat-cell *matCellDef="let verb">
-                        {{ verb.russianInfinitive }}
-                    </td>
-                </ng-container>
+                    <ng-container matColumnDef="russianInfinitive">
+                        <th mat-header-cell *matHeaderCellDef>Russian</th>
+                        <td mat-cell *matCellDef="let verb">
+                            {{ verb.russianInfinitive }}
+                        </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="tags">
-                    <th mat-header-cell *matHeaderCellDef>Tags</th>
-                    <td mat-cell *matCellDef="let verb">
-                        {{ (verb.tags || []).join(', ') }}
-                    </td>
-                </ng-container>
+                    <ng-container matColumnDef="tags">
+                        <th mat-header-cell *matHeaderCellDef>Tags</th>
+                        <td mat-cell *matCellDef="let verb">
+                            {{ (verb.tags || []).join(', ') }}
+                        </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef></th>
-                    <td class="row-actions" mat-cell *matCellDef="let verb">
-                        <mat-icon
-                            class="row-action-button"
-                            (click)="onEditVerbClick(verb)"
-                            >edit</mat-icon
-                        >
-                        <mat-icon
-                            class="row-action-button"
-                            (click)="onDeleteVerbClick(verb)"
-                            >delete</mat-icon
-                        >
-                    </td>
-                </ng-container>
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td class="row-actions" mat-cell *matCellDef="let verb">
+                            <mat-icon
+                                class="row-action-button"
+                                (click)="onEditVerbClick(verb)"
+                                >edit</mat-icon
+                            >
+                            <mat-icon
+                                class="row-action-button"
+                                (click)="onDeleteVerbClick(verb)"
+                                >delete</mat-icon
+                            >
+                        </td>
+                    </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                    mat-row
-                    *matRowDef="let row; columns: displayedColumns"
-                ></tr>
-            </table>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr
+                        mat-row
+                        *matRowDef="let row; columns: displayedColumns"
+                    ></tr>
+                </table>
+            </div>
         </ng-container>
     `,
     styles: [
@@ -80,15 +82,17 @@ import { VerbDialogComponent } from './verb-dialog.component';
             .actions {
                 padding-bottom: 10px;
             }
-
             .row-actions {
                 padding: 0px;
                 width: 50px;
             }
-
             .row-action-button {
                 padding: 0px;
                 cursor: pointer;
+            }
+            .table-container {
+                max-height: 700px;
+                overflow: auto;
             }
         `,
     ],
