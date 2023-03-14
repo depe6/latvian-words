@@ -111,7 +111,7 @@ export class VerbsComponent implements OnInit {
     }
 
     onEditVerbClick(verb: Verb) {
-        this.openVerbDialog(verb.clone(), async (updatedVerb) => {
+        this.openVerbDialog(verb.clone(), false, async (updatedVerb) => {
             await this.verbService.updateVerb(updatedVerb);
             this.reload();
         });
@@ -123,16 +123,24 @@ export class VerbsComponent implements OnInit {
     }
 
     async onNewVerbClick() {
-        this.openVerbDialog(Verb.empty(), async (verb) => {
+        this.openVerbDialog(Verb.empty(), true, async (verb) => {
             await this.verbService.addVerb(verb);
             this.reload();
         });
     }
 
-    private openVerbDialog(verb: Verb, saveCallback: (verb: Verb) => void) {
+    private openVerbDialog(
+        verb: Verb,
+        addingNewVerb: boolean,
+        saveCallback: (verb: Verb) => void
+    ) {
         const dialogRef = this.dialog.open(VerbDialogComponent, {
             maxWidth: '600px',
-            data: { verb, allVerbs: this.dataSource } as VerbDialogData,
+            data: {
+                verb,
+                allVerbs: this.dataSource,
+                addingNewVerb,
+            } as VerbDialogData,
         });
 
         dialogRef.afterClosed().subscribe(async (result) => {

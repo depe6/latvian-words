@@ -29,6 +29,7 @@ export class VerbDialogComponent {
 
     onSave() {
         if (
+            this.dialogData.addingNewVerb &&
             this.dialogData.allVerbs.some(
                 (x) =>
                     (x.latvianInfinitive || '').toLowerCase() ===
