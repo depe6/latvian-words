@@ -1,6 +1,14 @@
+// Common
+export * from './common/grammatical-number';
+
 // Dialog
 export * from './dialog/dialog-button';
 export * from './dialog/message-dialog-data';
+
+// Nouns
+export * from './nouns/noun-declension';
+export * from './nouns/noun-dialog-data';
+export * from './nouns/noun';
 
 // Trainings
 export * from './trainings/random-verbs/random-verbs-training-dialog-data';

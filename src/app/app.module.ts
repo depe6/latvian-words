@@ -20,6 +20,10 @@ import {
     VerbTenseComponent,
     RandomVerbsTrainingDialogComponent,
     RandmVerbsTrainingVerbTenseComponent,
+    NounsComponent,
+    NounDialogComponent,
+    NounFormComponent,
+    NounDeclensionComponent,
 } from './components';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,6 +46,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         RandomVerbsTrainingComponent,
         RandomVerbsTrainingDialogComponent,
         RandmVerbsTrainingVerbTenseComponent,
+        NounsComponent,
+        NounDialogComponent,
+        NounFormComponent,
+        NounDeclensionComponent,
     ],
     imports: [
         BrowserModule,

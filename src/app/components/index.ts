@@ -1,6 +1,12 @@
 // Dialogs
 export * from './dialog/message-dialog.component';
 
+// Nouns
+export * from './nouns/noun-declension.component';
+export * from './nouns/noun-dialog.component';
+export * from './nouns/noun-form.component';
+export * from './nouns/nouns.component';
+
 // Trainings
 export * from './trainings/random-verbs/random-verbs-training-dialog.component';
 export * from './trainings/random-verbs/random-verbs-training-form-dialog.component';

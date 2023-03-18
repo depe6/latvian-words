@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {
     LoginComponent,
+    NounsComponent,
     SummaryComponent,
     TrainingsComponent,
     VerbsComponent,
@@ -23,6 +24,11 @@ const routes: Routes = [
             {
                 path: 'verbs',
                 component: VerbsComponent,
+                canActivate: [AuthGuard],
+            },
+            {
+                path: 'nouns',
+                component: NounsComponent,
                 canActivate: [AuthGuard],
             },
             {

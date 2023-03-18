@@ -26,6 +26,7 @@ import { AuthService } from '../services';
                     <mat-nav-list>
                         <a mat-list-item routerLink="trainings">Trainings</a>
                         <a mat-list-item routerLink="verbs">Verbs</a>
+                        <a mat-list-item routerLink="nouns">Nouns</a>
 
                         <div class="menu-spacer"></div>
                         <a mat-list-item (click)="onLogout()">Logout</a>
