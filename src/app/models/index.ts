@@ -11,6 +11,9 @@ export * from './nouns/noun-dialog-data';
 export * from './nouns/noun';
 
 // Trainings
+export * from './trainings/random-nouns/random-nouns-training-dialog-data';
+export * from './trainings/random-nouns/random-nouns-training-form-dialog-data';
+export * from './trainings/random-nouns/random-nouns-training';
 export * from './trainings/random-verbs/random-verbs-training-dialog-data';
 export * from './trainings/random-verbs/random-verbs-training-form-dialog-data';
 export * from './trainings/random-verbs/random-verbs-training';

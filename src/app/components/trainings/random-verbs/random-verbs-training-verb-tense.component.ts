@@ -96,7 +96,7 @@ import { VerbTense } from 'src/app/models';
         `,
     ],
 })
-export class RandmVerbsTrainingVerbTenseComponent {
+export class RandomVerbsTrainingVerbTenseComponent {
     @Input()
     pastTense: VerbTense | null = null;
 

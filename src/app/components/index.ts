@@ -8,6 +8,11 @@ export * from './nouns/noun-form.component';
 export * from './nouns/nouns.component';
 
 // Trainings
+export * from './trainings/random-nouns/random-nouns-training-dialog.component';
+export * from './trainings/random-nouns/random-nouns-training-form-dialog.component';
+export * from './trainings/random-nouns/random-nouns-training-form.component';
+export * from './trainings/random-nouns/random-nouns-training-noun.component';
+export * from './trainings/random-nouns/random-nouns-training.component';
 export * from './trainings/random-verbs/random-verbs-training-dialog.component';
 export * from './trainings/random-verbs/random-verbs-training-form-dialog.component';
 export * from './trainings/random-verbs/random-verbs-training-form.component';

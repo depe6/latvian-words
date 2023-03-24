@@ -6,7 +6,12 @@ import {
     RandomVerbsTraining,
     RandomVerbsTrainingFormDialogData,
     RandomVerbsTrainingDialogData,
+    RandomNounsTraining,
+    RandomNounsTrainingFormDialogData,
+    RandomNounsTrainingDialogData,
 } from '../../models';
+import { RandomNounsTrainingDialogComponent } from './random-nouns/random-nouns-training-dialog.component';
+import { RandomNounsTrainingFormDialogComponent } from './random-nouns/random-nouns-training-form-dialog.component';
 import { RandomVerbsTrainingDialogComponent } from './random-verbs/random-verbs-training-dialog.component';
 import { RandomVerbsTrainingFormDialogComponent } from './random-verbs/random-verbs-training-form-dialog.component';
 
@@ -21,8 +26,17 @@ import { RandomVerbsTrainingFormDialogComponent } from './random-verbs/random-ve
             <div class="actions">
                 <button mat-button [matMenuTriggerFor]="menu">Add New</button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="onNewVerbTrainingClick()">
+                    <button
+                        mat-menu-item
+                        (click)="onNewRandomVerbsTrainingClick()"
+                    >
                         Random Verbs Training
+                    </button>
+                    <button
+                        mat-menu-item
+                        (click)="onNewRandomNounsTrainingClick()"
+                    >
+                        Random Nouns Training
                     </button>
                 </mat-menu>
             </div>
@@ -125,10 +139,19 @@ export class TrainingsComponent implements OnInit {
 
     onEditTrainingClick(training: Training) {
         if (training instanceof RandomVerbsTraining) {
-            this.openVerbTrainingDialog(
+            this.openRanomVerbsTrainingDialog(
                 training.clone(),
-                async (updatedVerb) => {
-                    await this.trainingService.updateTraining(updatedVerb);
+                async (updatedTraining) => {
+                    await this.trainingService.updateTraining(updatedTraining);
+                    this.reload();
+                }
+            );
+        }
+        if (training instanceof RandomNounsTraining) {
+            this.openRandomNounsTrainingDialog(
+                training.clone(),
+                async (updatedTraining) => {
+                    await this.trainingService.updateTraining(updatedTraining);
                     this.reload();
                 }
             );
@@ -144,6 +167,15 @@ export class TrainingsComponent implements OnInit {
                 } as RandomVerbsTrainingDialogData,
             });
         }
+
+        if (training instanceof RandomNounsTraining) {
+            this.dialog.open(RandomNounsTrainingDialogComponent, {
+                maxWidth: '600px',
+                data: {
+                    randomNounsTraining: training,
+                } as RandomNounsTrainingDialogData,
+            });
+        }
     }
 
     async onDeleteTrainingClick(training: Training) {
@@ -151,8 +183,8 @@ export class TrainingsComponent implements OnInit {
         this.reload();
     }
 
-    async onNewVerbTrainingClick() {
-        this.openVerbTrainingDialog(
+    async onNewRandomVerbsTrainingClick() {
+        this.openRanomVerbsTrainingDialog(
             RandomVerbsTraining.empty(),
             async (training) => {
                 await this.trainingService.addTraining(training);
@@ -161,7 +193,17 @@ export class TrainingsComponent implements OnInit {
         );
     }
 
-    private openVerbTrainingDialog(
+    async onNewRandomNounsTrainingClick() {
+        this.openRandomNounsTrainingDialog(
+            RandomNounsTraining.empty(),
+            async (training) => {
+                await this.trainingService.addTraining(training);
+                this.reload();
+            }
+        );
+    }
+
+    private openRanomVerbsTrainingDialog(
         randomVerbsTraining: RandomVerbsTraining,
         saveCallback: (verbTraining: RandomVerbsTraining) => void
     ) {
@@ -178,6 +220,27 @@ export class TrainingsComponent implements OnInit {
         dialogRef.afterClosed().subscribe(async (result) => {
             if (result === true) {
                 saveCallback(randomVerbsTraining);
+            }
+        });
+    }
+
+    private openRandomNounsTrainingDialog(
+        randomNounsTraining: RandomNounsTraining,
+        saveCallback: (nounTraining: RandomNounsTraining) => void
+    ) {
+        const dialogRef = this.dialog.open(
+            RandomNounsTrainingFormDialogComponent,
+            {
+                maxWidth: '600px',
+                data: {
+                    randomNounsTraining: randomNounsTraining,
+                } as RandomNounsTrainingFormDialogData,
+            }
+        );
+
+        dialogRef.afterClosed().subscribe(async (result) => {
+            if (result === true) {
+                saveCallback(randomNounsTraining);
             }
         });
     }
